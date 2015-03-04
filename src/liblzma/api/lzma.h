@@ -277,7 +277,6 @@ extern "C" {
 #define LZMA_H_INTERNAL 1
 
 /* Basic features */
-#include "lzma/version.h"
 #include "lzma/base.h"
 #include "lzma/vli.h"
 #include "lzma/check.h"

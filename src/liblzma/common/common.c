@@ -13,24 +13,6 @@
 #include "common.h"
 
 
-/////////////
-// Version //
-/////////////
-
-extern LZMA_API(uint32_t)
-lzma_version_number(void)
-{
-	return LZMA_VERSION;
-}
-
-
-extern LZMA_API(const char *)
-lzma_version_string(void)
-{
-	return LZMA_VERSION_STRING;
-}
-
-
 ///////////////////////
 // Memory allocation //
 ///////////////////////

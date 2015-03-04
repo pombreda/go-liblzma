@@ -78,30 +78,6 @@ typedef struct {
 	 */
 	lzma_check check;
 
-	/*
-	 * Reserved space to allow possible future extensions without
-	 * breaking the ABI. You should not touch these, because the
-	 * names of these variables may change.
-	 *
-	 * (We will never be able to use all of these since Stream Flags
-	 * is just two bytes plus Backward Size of four bytes. But it's
-	 * nice to have the proper types when they are needed.)
-	 */
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-	lzma_reserved_enum reserved_enum3;
-	lzma_reserved_enum reserved_enum4;
-	lzma_bool reserved_bool1;
-	lzma_bool reserved_bool2;
-	lzma_bool reserved_bool3;
-	lzma_bool reserved_bool4;
-	lzma_bool reserved_bool5;
-	lzma_bool reserved_bool6;
-	lzma_bool reserved_bool7;
-	lzma_bool reserved_bool8;
-	uint32_t reserved_int1;
-	uint32_t reserved_int2;
-
 } lzma_stream_flags;
 
 

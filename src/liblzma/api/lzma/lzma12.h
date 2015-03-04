@@ -175,8 +175,8 @@ extern LZMA_API(lzma_bool) lzma_mode_is_supported(lzma_mode mode)
  * \brief       Options specific to the LZMA1 and LZMA2 filters
  *
  * Since LZMA1 and LZMA2 share most of the code, it's simplest to share
- * the options structure too. For encoding, all but the reserved variables
- * need to be initialized unless specifically mentioned otherwise.
+ * the options structure too. For encoding, all variables need to be
+ * initialized unless specifically mentioned otherwise.
  * lzma_lzma_preset() can be used to get a good starting point.
  *
  * For raw decoding, both LZMA1 and LZMA2 need dict_size, preset_dict, and
@@ -373,28 +373,6 @@ typedef struct {
 	 * dramatically, possibly creating a denial of service attack.
 	 */
 	uint32_t depth;
-
-	/*
-	 * Reserved space to allow possible future extensions without
-	 * breaking the ABI. You should not touch these, because the names
-	 * of these variables may change. These are and will never be used
-	 * with the currently supported options, so it is safe to leave these
-	 * uninitialized.
-	 */
-	uint32_t reserved_int1;
-	uint32_t reserved_int2;
-	uint32_t reserved_int3;
-	uint32_t reserved_int4;
-	uint32_t reserved_int5;
-	uint32_t reserved_int6;
-	uint32_t reserved_int7;
-	uint32_t reserved_int8;
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-	lzma_reserved_enum reserved_enum3;
-	lzma_reserved_enum reserved_enum4;
-	void *reserved_ptr1;
-	void *reserved_ptr2;
 
 } lzma_options_lzma;
 

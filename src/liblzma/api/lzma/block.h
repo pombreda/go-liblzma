@@ -216,29 +216,6 @@ typedef struct {
 	 */
 	uint8_t raw_check[LZMA_CHECK_SIZE_MAX];
 
-	/*
-	 * Reserved space to allow possible future extensions without
-	 * breaking the ABI. You should not touch these, because the names
-	 * of these variables may change. These are and will never be used
-	 * with the currently supported options, so it is safe to leave these
-	 * uninitialized.
-	 */
-	void *reserved_ptr1;
-	void *reserved_ptr2;
-	void *reserved_ptr3;
-	uint32_t reserved_int1;
-	uint32_t reserved_int2;
-	lzma_vli reserved_int3;
-	lzma_vli reserved_int4;
-	lzma_vli reserved_int5;
-	lzma_vli reserved_int6;
-	lzma_vli reserved_int7;
-	lzma_vli reserved_int8;
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-	lzma_reserved_enum reserved_enum3;
-	lzma_reserved_enum reserved_enum4;
-
 	/**
 	 * \brief       A flag to Block decoder to not verify the Check field
 	 *
@@ -259,14 +236,6 @@ typedef struct {
 	 *   - lzma_block_header_decode() always sets this to false
 	 */
 	lzma_bool ignore_check;
-
-	lzma_bool reserved_bool2;
-	lzma_bool reserved_bool3;
-	lzma_bool reserved_bool4;
-	lzma_bool reserved_bool5;
-	lzma_bool reserved_bool6;
-	lzma_bool reserved_bool7;
-	lzma_bool reserved_bool8;
 
 } lzma_block;
 

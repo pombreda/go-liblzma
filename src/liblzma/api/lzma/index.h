@@ -50,10 +50,6 @@ typedef struct {
 		 */
 		const lzma_stream_flags *flags;
 
-		const void *reserved_ptr1;
-		const void *reserved_ptr2;
-		const void *reserved_ptr3;
-
 		/**
 		 * \brief       Stream number in the lzma_index
 		 *
@@ -106,11 +102,6 @@ typedef struct {
 		 * a multiple of four bytes.
 		 */
 		lzma_vli padding;
-
-		lzma_vli reserved_vli1;
-		lzma_vli reserved_vli2;
-		lzma_vli reserved_vli3;
-		lzma_vli reserved_vli4;
 	} stream;
 
 	struct {
@@ -195,16 +186,6 @@ typedef struct {
 		 * the Block decoder will actually read.
 		 */
 		lzma_vli total_size;
-
-		lzma_vli reserved_vli1;
-		lzma_vli reserved_vli2;
-		lzma_vli reserved_vli3;
-		lzma_vli reserved_vli4;
-
-		const void *reserved_ptr1;
-		const void *reserved_ptr2;
-		const void *reserved_ptr3;
-		const void *reserved_ptr4;
 	} block;
 
 	/*

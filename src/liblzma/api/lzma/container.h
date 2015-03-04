@@ -159,29 +159,6 @@ typedef struct {
 	 */
 	lzma_check check;
 
-	/*
-	 * Reserved space to allow possible future extensions without
-	 * breaking the ABI. You should not touch these, because the names
-	 * of these variables may change. These are and will never be used
-	 * with the currently supported options, so it is safe to leave these
-	 * uninitialized.
-	 */
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-	lzma_reserved_enum reserved_enum3;
-	uint32_t reserved_int1;
-	uint32_t reserved_int2;
-	uint32_t reserved_int3;
-	uint32_t reserved_int4;
-	uint64_t reserved_int5;
-	uint64_t reserved_int6;
-	uint64_t reserved_int7;
-	uint64_t reserved_int8;
-	void *reserved_ptr1;
-	void *reserved_ptr2;
-	void *reserved_ptr3;
-	void *reserved_ptr4;
-
 } lzma_mt;
 
 

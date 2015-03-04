@@ -30,23 +30,6 @@ typedef unsigned char lzma_bool;
 
 
 /**
- * \brief       Type of reserved enumeration variable in structures
- *
- * To avoid breaking library ABI when new features are added, several
- * structures contain extra variables that may be used in future. Since
- * sizeof(enum) can be different than sizeof(int), and sizeof(enum) may
- * even vary depending on the range of enumeration constants, we specify
- * a separate type to be used for reserved enumeration variables. All
- * enumeration constants in liblzma API will be non-negative and less
- * than 128, which should guarantee that the ABI won't break even when
- * new constants are added to existing enumerations.
- */
-typedef enum {
-	LZMA_RESERVED_ENUM      = 0
-} lzma_reserved_enum;
-
-
-/**
  * \brief       Return values used by several functions in liblzma
  *
  * Check the descriptions of specific functions to find out which return
@@ -504,23 +487,6 @@ typedef struct {
 	/** Internal state is not visible to applications. */
 	lzma_internal *internal;
 
-	/*
-	 * Reserved space to allow possible future extensions without
-	 * breaking the ABI. Excluding the initialization of this structure,
-	 * you should not touch these, because the names of these variables
-	 * may change.
-	 */
-	void *reserved_ptr1;
-	void *reserved_ptr2;
-	void *reserved_ptr3;
-	void *reserved_ptr4;
-	uint64_t reserved_int1;
-	uint64_t reserved_int2;
-	size_t reserved_int3;
-	size_t reserved_int4;
-	lzma_reserved_enum reserved_enum1;
-	lzma_reserved_enum reserved_enum2;
-
 } lzma_stream;
 
 
@@ -542,10 +508,7 @@ typedef struct {
  *     lzma_stream tmp = LZMA_STREAM_INIT;
  *     *strm = tmp;
  */
-#define LZMA_STREAM_INIT \
-	{ NULL, 0, 0, NULL, 0, 0, NULL, NULL, \
-	NULL, NULL, NULL, NULL, 0, 0, 0, 0, \
-	LZMA_RESERVED_ENUM, LZMA_RESERVED_ENUM }
+#define LZMA_STREAM_INIT { NULL, 0, 0, NULL, 0, 0, NULL, NULL }
 
 
 /**

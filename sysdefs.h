@@ -20,10 +20,6 @@
 // Includes //
 //////////////
 
-#ifdef HAVE_CONFIG_H
-#	include <config.h>
-#endif
-
 // Get standard-compliant stdio functions under MinGW and MinGW-w64.
 #ifdef __MINGW32__
 #	define __USE_MINGW_ANSI_STDIO 1
@@ -32,21 +28,15 @@
 // size_t and NULL
 #include <stddef.h>
 
-#ifdef HAVE_INTTYPES_H
-#	include <inttypes.h>
-#endif
+#include <inttypes.h>
 
 // C99 says that inttypes.h always includes stdint.h, but some systems
 // don't do that, and require including stdint.h separately.
-#ifdef HAVE_STDINT_H
-#	include <stdint.h>
-#endif
+#include <stdint.h>
 
 // Some pre-C99 systems have SIZE_MAX in limits.h instead of stdint.h. The
 // limits are also used to figure out some macros missing from pre-C99 systems.
-#ifdef HAVE_LIMITS_H
-#	include <limits.h>
-#endif
+#include <limits.h>
 
 // Be more compatible with systems that have non-conforming inttypes.h.
 // We assume that int is 32-bit and that long is either 32-bit or 64-bit.
@@ -54,9 +44,6 @@
 // Note that this duplicates some code from lzma.h, but this is better since
 // we can work without inttypes.h thanks to Autoconf tests.
 #ifndef UINT32_C
-#	if UINT_MAX != 4294967295U
-#		error UINT32_C is not defined and unsigned int is not 32-bit.
-#	endif
 #	define UINT32_C(n) n ## U
 #endif
 #ifndef UINT32_MAX
@@ -113,15 +100,6 @@
 #endif
 
 // The code currently assumes that size_t is either 32-bit or 64-bit.
-#ifndef SIZE_MAX
-#	if SIZEOF_SIZE_T == 4
-#		define SIZE_MAX UINT32_MAX
-#	elif SIZEOF_SIZE_T == 8
-#		define SIZE_MAX UINT64_MAX
-#	else
-#		error size_t is not 32-bit or 64-bit
-#	endif
-#endif
 #if SIZE_MAX != UINT32_MAX && SIZE_MAX != UINT64_MAX
 #	error size_t is not 32-bit or 64-bit
 #endif
@@ -139,31 +117,11 @@
 //
 //    bool baz = (flags & 0x100);
 //
-#ifdef HAVE_STDBOOL_H
-#	include <stdbool.h>
-#else
-#	if ! HAVE__BOOL
-typedef unsigned char _Bool;
-#	endif
-#	define bool _Bool
-#	define false 0
-#	define true 1
-#	define __bool_true_false_are_defined 1
-#endif
+#include <stdbool.h>
 
 // string.h should be enough but let's include strings.h and memory.h too if
 // they exists, since that shouldn't do any harm, but may improve portability.
-#ifdef HAVE_STRING_H
-#	include <string.h>
-#endif
-
-#ifdef HAVE_STRINGS_H
-#	include <strings.h>
-#endif
-
-#ifdef HAVE_MEMORY_H
-#	include <memory.h>
-#endif
+#include <string.h>
 
 // As of MSVC 2013, inline and restrict are supported with
 // non-standard keywords.

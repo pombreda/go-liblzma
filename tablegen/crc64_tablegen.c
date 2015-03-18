@@ -14,7 +14,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-#include "../../common/tuklib_integer.h"
+#include "../tuklib_integer.h"
 
 
 static uint64_t crc64_table[4][256];

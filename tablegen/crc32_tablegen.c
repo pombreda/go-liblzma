@@ -15,7 +15,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-#include "../../common/tuklib_integer.h"
+#include "../tuklib_integer.h"
 
 
 static uint32_t crc32_table[8][256];

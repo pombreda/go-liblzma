@@ -10,6 +10,8 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifdef HAVE_SMALL
+
 #include "check.h"
 
 
@@ -40,7 +42,11 @@ crc64_init(void)
 extern LZMA_API(uint64_t)
 lzma_crc64(const uint8_t *buf, size_t size, uint64_t crc)
 {
-	mythread_once(crc64_init);
+	static bool once = false;
+	if (!once) {
+		crc64_init();
+		once = true;
+	}
 
 	crc = ~crc;
 
@@ -51,3 +57,5 @@ lzma_crc64(const uint8_t *buf, size_t size, uint64_t crc)
 
 	return ~crc;
 }
+
+#endif

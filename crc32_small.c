@@ -10,6 +10,8 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifdef HAVE_SMALL
+
 #include "check.h"
 
 
@@ -40,7 +42,11 @@ crc32_init(void)
 extern void
 lzma_crc32_init(void)
 {
-	mythread_once(crc32_init);
+	static bool once = false;
+	if (!once) {
+		crc32_init();
+		once = true;
+	}
 	return;
 }
 
@@ -59,3 +65,5 @@ lzma_crc32(const uint8_t *buf, size_t size, uint32_t crc)
 
 	return ~crc;
 }
+
+#endif
